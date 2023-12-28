@@ -1,0 +1,6 @@
+What is Emmet?
+Emmet is a set of plug-ins for text editors that allows for high-speed coding and editing in HTML, XML, XSLT, and other structured code formats via content assist. 
+
+Difference between a Library and Framework?
+libraries target a specific functionality, while a framework tries to provide everything required to develop a complete application
+
