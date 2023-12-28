@@ -1,0 +1,27 @@
+code -> code splitting, caching, minifying
+npm -> node package manager
+standard repository of packages
+package.json is a config for dependencies
+webpack, vite, parcel
+dev and normal dependency
+dev -> when development requires
+package.json -> version of a package
+package.lock.json -> keep a track of exact version
+node modules-> all dependencies
+each dependency has it's own package.json
+put package.json and package.lock.json on github
+whatever we can regenerate don't put it on github
+npm -> calling package manager, npx -> executing the packages
+npx (package name)
+cdn not a preferred way 
+makes a network call in cdn
+auto loading -> is done by parcel
+Hot Module Replacement
+File Watching Algorithm
+Parcel also does image optimization
+can host on HTTPS
+remove unused code 
+dev and prod build
+remove main : index.js since in npx 
+parcel build we are specifying the entry point index.html
+
