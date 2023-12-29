@@ -1,0 +1,5 @@
+npm run start === npm start
+only for start keyword
+
+JSX != React
+JSX -> easy readable
