@@ -1,0 +1,15 @@
+Header
+Logo, NavItems
+Body
+Search Bar
+Card Container -> Restaurant Card
+Footer 
+Copyright, Links, Address, Contact Info
+UI layer + data layer
+
+if new card comes up then 
+re-renders each every card when new card comes up
+but with an id only new card is being rendered
+key should be unique
+
+don't use indexes for keys
