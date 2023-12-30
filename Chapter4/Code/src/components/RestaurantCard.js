@@ -1,7 +1,7 @@
 import { URL } from "../utils/constants";
 
 const RestautantCard = ({ resObj }) => {
-  const { name, cuisine, stars, time } = resObj;
+  const { info, analytics, cta } = resObj;
   return (
     <div
       className='res-card'
@@ -9,19 +9,13 @@ const RestautantCard = ({ resObj }) => {
         backgroundColor: "#f0f0f0",
       }}
     >
-      <img
-        className='res-logo'
-        alt='food'
-        src={URL}
-      />
-      <h3>{name}</h3>
-      <h4>{cuisine.join(",")}</h4>
-      <h4>{stars}</h4>
-      <h4>{time}</h4>
+      <img className='res-logo' alt='food' src={URL+info.cloudinaryImageId} />
+      <h3>{info.name}</h3>
+      <h4>{info.cuisines.join(",")}</h4>
+      <h4>{info.avgRating}</h4>
+      <h4>{info.sla.slaString}</h4>
     </div>
   );
 };
 
-
-
-export default RestautantCard
+export default RestautantCard;

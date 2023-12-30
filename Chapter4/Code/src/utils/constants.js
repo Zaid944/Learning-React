@@ -1,5 +1,5 @@
 export const URL =
-  "https://tse3.mm.bing.net/th?id=OIP.p0KaOpfzw_8WAXPvNKhmhwHaHa&pid=Api&P=0&h=180";
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 export const LOGO_URL =
   "https://image.freepik.com/free-vector/food-app-icon-logo_29069-50.jpg";
 
