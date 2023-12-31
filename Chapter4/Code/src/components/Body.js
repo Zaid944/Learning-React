@@ -2,6 +2,7 @@ import RestautantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
   //whenever we are typing searchText whole body is re-rendered
   //Local State Variable(JS Fn)
@@ -34,9 +35,11 @@ const Body = () => {
   }, []);
   //whenever state  updates react starts a reconciliation cycle
   async function fetchData() {
+    //data -> promise
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6888691&lng=77.1567848&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
+
     const jsonData = await data.json();
     // console.log(jsonData);
     console.log(
@@ -103,7 +106,11 @@ const Body = () => {
       </div>
       <div className='res-container'>
         {filteredRestaurants.map((resItem) => {
-          return <RestautantCard key={resItem.info.id} resObj={resItem} />;
+          return (
+            <Link key={resItem.info.id} to={"/restaurant/" + resItem.info.id}>
+              <RestautantCard resObj={resItem} />
+            </Link>
+          );
         })}
       </div>
     </div>
