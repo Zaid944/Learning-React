@@ -1,10 +1,12 @@
-import RestautantCard from "./RestaurantCard";
+import RestautantCard, { withPromotedLabel } from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Body = () => {
+  const { setUserInfo, loggedInUser } = useContext(UserContext);
   //whenever we are typing searchText whole body is re-rendered
   //Local State Variable(JS Fn)
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -27,9 +29,10 @@ const Body = () => {
   //       time: "100 mins",
   //     },
   //   ];
-
+  const RestaurantCardPromoted = withPromotedLabel(RestautantCard);
   // after our component renders
   // render the component->api call->render
+  console.log(filteredRestaurants);
   useEffect(() => {
     fetchData();
     console.log("Use effect called");
@@ -111,13 +114,27 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
-        </div>  
+        </div>
+        <div className='m-4 p-4 flex items-center'>
+          <label>UserName</label>
+          <input
+            type='text'
+            className='border border-blue-600'
+            value={loggedInUser}
+            onChange={(e) => setUserInfo(e.target.value)}
+          />
+        </div>
       </div>
       <div className='res-container flex flex-wrap'>
         {filteredRestaurants.map((resItem) => {
           return (
             <Link key={resItem.info.id} to={"/restaurant/" + resItem.info.id}>
-              <RestautantCard resObj={resItem} />
+              {/*if restaurant is promoted then make it promoted*/}
+              {resItem.info.avgRating < 4 ? (
+                <RestaurantCardPromoted resObj={resItem} />
+              ) : (
+                <RestautantCard resObj={resItem} />
+              )}
             </Link>
           );
         })}
