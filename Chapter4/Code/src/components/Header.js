@@ -3,7 +3,9 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
+  //subscribing to store using selector
   //at each render new variable is made
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
@@ -15,6 +17,8 @@ const Header = () => {
     console.log("Use Effect called");
   }, [btnNameReact]);
   const onlineStatus = useOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   //don't render
   //   let btnName = "Login";
 
@@ -44,7 +48,9 @@ const Header = () => {
           <li className='px-4'>
             <Link to='/contact'>Contact Us</Link>
           </li>
-          <li className='px-4'>Cart</li>
+          <Link to='/cart'>
+            <li className='px-4 text-bold'>Cart ({cartItems.length} Items)</li>
+          </Link>
           <button
             className='login'
             onClick={() => {
